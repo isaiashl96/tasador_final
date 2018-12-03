@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    {% block title %}
+    <h1>Login</h1>
+    {% endblock %}
+
+    {% block content %}
+    <form class="site-form" action="{% url 'accounts:login' %}" method="post">
+        {% csrf_token   %}
+        {% bootstrap_form form layout='inline' %}
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{request.GET.next}}">
+        {% endif %}
+        {% buttons %}
+        <button type="submit" class="btn btn-primary">
+        {% bootstrap_icon "user" %} Login
+        </button>
+        {% endbuttons %}
+    </form>
+    <p>Si no tiene cuenta, <a href="{% url 'registration_register' %}">Registrese</a>!</p>
+    {% endblock %}
+</body>
+</html>
