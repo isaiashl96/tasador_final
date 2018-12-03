@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasador</title>
+</head>
+<body>
+    {% block title %}
+    <h1>Bienvenido al Tasador de Prestamype</h1>
+
+    {% endblock %}
+
+    {% block content %}
+    <ul>
+        <li><a href="{% url 'tasador_app:crear_depa' %}">Tasar Departamento</a></li>
+        <li><a href="{% url 'tasador_app:crear_casa' %}">Tasar Casa</a></li>
+        <li><a href="{% url 'tasador_app:crear_terreno' %}">Tasar Terreno</a></li>
+    </ul>
+    {% endblock %}
+</body>
+</html>

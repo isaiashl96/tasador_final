@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasador</title>
+</head>
+<body>
+    {% block title %}
+    <h1>Inmueble</h1>
+    {% endblock %}
+
+    {% block content %}
+    <div class="lista_inmuebles">
+        {% for inmueble in lista_inmuebles %}
+            <div class="inmueble">
+                <h3><a>Area: {{inmueble.area}}</a></h3>
+                <h3>Nº cuartos: {{inmueble.cuartos}}</h3>
+                <h3>Nº baños: {{inmueble.aseos}}</h3>
+            </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+</html>

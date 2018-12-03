@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado Tasacion</title>
+</head>
+<body>
+    {% block title %}
+    <h1>Resultado Tasacion</h1>
+    {% endblock %}
+
+    {% block content %}
+    <div class="inmueble">
+        <h3>Usuario: {{inmueble.empresario}}</h3>
+        <h3>Distrito: {{inmueble.distrito}}</h3>
+        <h3>Area: {{inmueble.area}}</h3>
+        <h3>Nº de dormitorios: {{inmueble.dormitorios}}</h3>
+        <h3>Nº de baños: {{inmueble.baños}}</h3>
+        <h3>Latitud: {{inmueble.ubicacion.y}}</h3>
+        <h3>Longitud: {{inmueble.ubicacion.x}}</h3>
+    </div>
+    <h1> La casa está tasada en $ {{precio_reg}} o S/. {{precio_reg_soles}}</h1>
+    <a href="{% url 'tasador_app:crear_casa' %}">Atrás</a>
+    {% endblock %}
+</body>
+</html>

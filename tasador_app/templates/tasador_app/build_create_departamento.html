@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Crear Departamento</title>
+</head>
+<body>
+    {% block title %}
+    <h2>Coloque los datos de su departamento</h2>
+    {% endblock %}
+
+    {% block content %}
+    <div class="insert-build">
+
+        <form class="site-form" action="{% url 'tasador_app:crear_depa' %}" method="post">
+            {% csrf_token %}
+            <h3> Usando el mapa, señale la ubicación de su inmueble con el marcador</h3>
+            {{form.media}}
+            {{form.as_ul}}
+
+            <script type="text/javascript">
+
+            </script>
+
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">
+            {% bootstrap_icon "home" %} Tasar
+            </button>
+            {% endbuttons %}
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>
