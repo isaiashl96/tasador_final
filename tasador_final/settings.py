@@ -150,7 +150,7 @@ STATICFILES_DIRS = [
 ]
 STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 #LEAFLET_CONFIG = {
 #    'DEFAULT_CENTER': (-12.0432, -77.0282),
@@ -170,6 +170,10 @@ MAP_WIDGETS = {
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
+
+
+GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
 
 #if os.name == 'nt':
 #    import platform
