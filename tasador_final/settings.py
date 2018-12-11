@@ -148,7 +148,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES_DIRS = [
     #r'C:\Users\Isaias HL\Envs\env2\Lib\site-packages\django\contrib\admin\static',
     #'/Users/isaiashl/Documents/Environments/djangoproject/lib/python3.7/site-packages/django/contrib/admin/static'
-    os.path.join(BASE_DIR, "staticfiles/",
+    os.path.join(BASE_DIR, "staticfiles/"),
 ]
 STATIC_URL = '/static/'
 
