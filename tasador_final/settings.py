@@ -21,10 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+3z+&=9!yyvps02isk4n+p%tzo2@7lk3%vy$$^l(i_un0^s596'
+#SECRET_KEY = '+3z+&=9!yyvps02isk4n+p%tzo2@7lk3%vy$$^l(i_un0^s596'
+SECRET_KEY = config('SECRET_KEY')
+
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 ALLOWED_HOSTS = ['localhost', '192.168.1.28', '192.168.1.36', socket.gethostbyname(socket.gethostname())]
 
@@ -80,15 +85,21 @@ WSGI_APPLICATION = 'tasador_final.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#        'NAME': 'postgis_db',
+#        'USER': 'isaiashl',
+#        'PASSWORD': 'sondiople15',
+#        'HOST': 'localhost',
+#        'PORT': '5432'
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'tasador',
-        'USER': 'postgres',
-        'PASSWORD': 'sondiople15',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
 }
 
 
@@ -132,9 +143,12 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES_DIRS = [
-    r'C:\Users\Isaias HL\Envs\env2\Lib\site-packages\django\contrib\admin\static',
+    #r'C:\Users\Isaias HL\Envs\env2\Lib\site-packages\django\contrib\admin\static',
+    '/Users/isaiashl/Documents/Environments/djangoproject/lib/python3.7/site-packages/django/contrib/admin/static'
 ]
 STATIC_URL = '/static/'
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #LEAFLET_CONFIG = {
 #    'DEFAULT_CENTER': (-12.0432, -77.0282),
@@ -155,13 +169,13 @@ MAP_WIDGETS = {
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
 REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
-if os.name == 'nt':
-    import platform
-    OSGEO4W = r"C:\OSGeo4W"
-    if '64' in platform.architecture()[0]:
-        OSGEO4W += "64"
-    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
-    os.environ['OSGEO4W_ROOT'] = OSGEO4W
-    os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
-    os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
-    os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
+#if os.name == 'nt':
+#    import platform
+#    OSGEO4W = r"C:\OSGeo4W"
+#    if '64' in platform.architecture()[0]:
+#        OSGEO4W += "64"
+#    assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
+#    os.environ['OSGEO4W_ROOT'] = OSGEO4W
+#    os.environ['GDAL_DATA'] = OSGEO4W + r"\share\gdal"
+#    os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
+#    os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
