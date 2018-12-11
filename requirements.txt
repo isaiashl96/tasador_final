@@ -3,7 +3,7 @@ Django==2.1.2
 django-bootstrap3==11.0.0
 django-map-widgets==0.2.1
 django-registration-redux==2.5
-gunicorn==19.6.0
+gunicorn==19.9.0
 haversine==2.0.0
 joblib==0.13.0
 lightgbm==2.2.2
