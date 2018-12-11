@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import socket
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,7 +33,7 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-ALLOWED_HOSTS = ['localhost', '192.168.1.28', '192.168.1.36', socket.gethostbyname(socket.gethostname())]
+ALLOWED_HOSTS = ['localhost','tasador-prestamype.herokuapp.com', '192.168.1.28', '192.168.1.36', socket.gethostbyname(socket.gethostname())]
 
 
 # Application definition
